@@ -1,4 +1,6 @@
 from config.Config import TestData
+
+
 class Helpers:
     def __init__(self):
         self.config = TestData()
@@ -16,8 +18,5 @@ class Helpers:
         else:
             raise Exception("Unexpected page!")
 
-
     def return_selector(self, element_locator):
         return self.config.LOCATORS[element_locator.lower()]
-
-

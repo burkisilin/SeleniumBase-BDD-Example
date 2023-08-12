@@ -19,25 +19,10 @@ def login_with_creds(context, credential_type):
     sb.type(helpers.return_selector("Login Password"), password)
     sb.click(helpers.return_selector("Login Button"))
 
+
 @step('"{field}" is entered as "{inpt}"')
 def enter_field(context, field, inpt):
     context.sb.type(helpers.return_selector(field), inpt)
-
-
-
-
-
-
-
-
-
-
-
-@step('user should not see "{locator}"')  # yarım
-def user_should_not_see_element(context, locator):
-    sb = context.sb
-    sb.assert_element(helpers.return_selector(locator))
-    sb.is_text_visible()
 
 
 @step('type test "{locator}" "{text}"')
@@ -65,7 +50,3 @@ def switch_password_visibility(context, needed_visibility):
 
     if needed_visibility != current_state:
         sb.click(helpers.return_selector("Hide / Show Password Icon"))
-
-
-
-
