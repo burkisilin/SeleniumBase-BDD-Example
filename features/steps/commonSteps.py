@@ -111,9 +111,7 @@ def click_text_from_items(context, text, locator):
         sb.assert_true(False)  # fail the test if the click has not made
 
 
-@step('user select "{combobox_text}" combobox as "{selection}"')
-def select_combobox(context, combobox_text, selection):
+@step('user click button by "{text}" text')
+def click_button_by_text(context, text):
     sb = context.sb
-    locators_to_click = [f"//span[text()='{combobox_text}']", f"//*[text()='{selection}']", "button.close-cities-items"]
-    sb.click_chain(locators_to_click)
-    time.sleep(3)
+    sb.click(f"//*[contains(text(),'{text}')]")

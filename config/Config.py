@@ -81,6 +81,7 @@ class TestData:
         "search result categories": "//div[@class='category-facet']//ul[@class='inner-list']",
         "search selected category": "li.selected-list-item > a",
         "search page search button": "//button[text()='Ara']",
+        "search page clear filters button": "button.clear-all",
     }
 
 

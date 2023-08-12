@@ -1,3 +1,5 @@
+import time
+
 from behave import step
 from utils.Helpers import Helpers
 from config.Config import TestData
@@ -6,10 +8,15 @@ helpers = Helpers()
 testData = TestData()
 
 
-@step('user should see "{filter}" filter is applied')
-def filter_is_applied(context, filter):
+@step('user should see filter "{filter}" is "{state}"')
+def filter_is_applied(context, filter, state):
     sb = context.sb
-    sb.assert_true(filter in sb.get_text_content(helpers.return_selector("Active Search Filters")))
+    if state == "applied":
+        sb.assert_true(filter in sb.get_text_content(helpers.return_selector("Active Search Filters")))
+    elif state == "not applied":
+        sb.assert_true(filter not in sb.get_text_content(helpers.return_selector("Active Search Filters")))
+    else:
+        raise Exception("Unexpected state from feature file!")
 
 
 @step('user searches "{search_keyword}" item')
@@ -40,7 +47,6 @@ def category_is_selected(context, category):
     else:
         sb.assert_true(False)
 
-
 @step('user should see item amount of "{category}" category is shown')
 def category_item_amount_is_correct(context, category):
     sb = context.sb
@@ -49,6 +55,11 @@ def category_item_amount_is_correct(context, category):
     actual_result_amount = int(sb.get_text_content(helpers.return_selector("search result amount")).replace(".", ""))
     sb.assert_equal(category_item_amount, actual_result_amount)
 
+@step('user select "{combobox_text}" combobox as "{selection}"')
+def select_combobox(context, combobox_text, selection):
+    sb = context.sb
+    locators_to_click = [f"//span[text()='{combobox_text}']", f"//*[text()='{selection}']", "button.close-cities-items"]
+    sb.click_chain(locators_to_click)
 
 @step('user should see results are from "{city}"')
 def results_from_city(context, city):
@@ -60,4 +71,10 @@ def results_from_city(context, city):
             no_error = False
             break
     sb.assert_true(no_error)
+
+
+@step('user remove "{filter}" filter')
+def remove_filter(context, filter):
+    sb = context.sb
+    sb.click_visible_elements(f"//span[contains(text(),'{filter}')]")
 

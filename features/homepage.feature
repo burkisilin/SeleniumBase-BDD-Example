@@ -68,7 +68,7 @@ Feature: Scenarios for the arabam.com homepage
   Scenario: See "All Showcase items" button redirects correctly
     When user clicks to the "All Showcase Button"
     Then user should see url is "https://www.arabam.com/ikinci-el?tag=Ana+Sayfa+Vitrin"
-    And user should see "Ana Sayfa Vitrin" filter is applied
+    And user should see filter "Ana Sayfa Vitrin" is "applied"
 
   Scenario: recommended for you section is shown
     Then user should see "recommended for you section"

@@ -1,6 +1,4 @@
-# Created by Burak at 12.08.2023
-Feature: # Enter feature name here
-  # Enter feature description here
+Feature: Scenarios for the arabam.com search page
 
   Background:
     Given user is not logged in
@@ -9,6 +7,7 @@ Feature: # Enter feature name here
   Scenario: Search results are shown
     When user searches "bmw" item
     Then user should see results are "shown"
+    And user should see filter "bmw" is "applied"
 
   Scenario: No Search result
     When user searches "qqqqqqNoResultqqqqqq" item
@@ -29,15 +28,48 @@ Feature: # Enter feature name here
     Given user select "İl" combobox as "İzmir"
     When user clicks to the "Search Page Search Button"
     Then user should see results are "shown"
-    Then user should see results are from "İzmir"
+    And user should see results are from "İzmir"
 
   Scenario: Apply filter
+    Given user searches "bmw" item
+    Given user click button by "Özel İlanlar" text
+    Given user click button by "Ana Sayfa Vitrin" text
+    When user clicks to the "Search Page Search Button"
+    Then user should see filter "Ana Sayfa Vitrin" is "applied"
+
   Scenario: Remove applied filter
+    Given user searches "bmw" item
+    Given user click button by "Özel İlanlar" text
+    Given user click button by "Ana Sayfa Vitrin" text
+    Given user clicks to the "Search Page Search Button"
+    When user remove "Ana Sayfa Vitrin" filter
+    Then user should see filter "Ana Sayfa Vitrin" is "not applied"
+
   Scenario: Apply multiple filter
+    Given user searches "bmw" item
+    Given user click button by "Özel İlanlar" text
+    Given user click button by "Ana Sayfa Vitrin" text
+    Given user click button by "Düşük Km" text
+    Given user click button by "Yeni Gibi" text
+    When user clicks to the "Search Page Search Button"
+    Then user should see filter "Ana Sayfa Vitrin" is "applied"
+    Then user should see filter "Düşük Km" is "applied"
+    Then user should see filter "Yeni Gibi" is "applied"
+
   Scenario: Remove all filters
+    Given user searches "bmw" item
+    Given user click button by "Özel İlanlar" text
+    Given user click button by "Ana Sayfa Vitrin" text
+    Given user click button by "Düşük Km" text
+    Given user click button by "Yeni Gibi" text
+    Given user clicks to the "Search Page Search Button"
+    When user clicks to the "search page clear filters button"
+    Then user should not see "active search filters"
+
+
   Scenario: List view
-  Scenario: Bigger List view
-  Scenario: Table view
+  Scenario: Detailed view
+  Scenario: Box view
   Scenario: Order by price low to high
   Scenario: Order by price high to low
   Scenario: Order by year new to old
