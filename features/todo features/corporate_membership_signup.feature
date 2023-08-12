@@ -1,9 +1,4 @@
-# Created by Burak at 12.08.2023
-Feature: # Enter feature name here
-  # Enter feature description here
-
-    #TODO Corporate membership Signup
-
+Feature: #TODO Corporate membership Signup
   Scenario: Corporate membership - register success
   Scenario: Corporate membership - Name is required
   Scenario: Corporate membership - Surname is required

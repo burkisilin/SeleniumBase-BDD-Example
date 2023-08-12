@@ -1,10 +1,4 @@
-# Created by Burak at 12.08.2023
-Feature: # Enter feature name here
-  # Enter feature description here
-
-
-  #TODO forgot password
-
+Feature: #TODO forgot password
   Scenario: Forgot password - valid phone number
   Scenario: Forgot password - invalid phone number
   Scenario: Forgot password - valid email

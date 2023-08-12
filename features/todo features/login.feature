@@ -1,8 +1,4 @@
-# Created by Burak at 12.08.2023
-Feature: # Enter feature name here
-  # Enter feature description here
-
-  #TODO login
+Feature: #TODO login
   Scenario: Login - remember me
   Scenario: Login - Facebook login success
   Scenario: Login - Google login success

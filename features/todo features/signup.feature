@@ -1,9 +1,4 @@
-# Created by Burak at 12.08.2023
-Feature: # Enter feature name here
-  # Enter feature description here
-
-  #TODO signup
-
+Feature: #TODO signup
   Scenario: SignUp - facebook register
   Scenario: SignUp - google register
   Scenario: SignUp - register success with phone number
