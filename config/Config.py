@@ -34,6 +34,8 @@ class TestData:
                 "password": ""
             }
     }
+
+    # Locators must be lower case letters
     LOCATORS = {
         "search input": "input.input[placeholder='Kelime, galeri adı veya ilan no ile ara']",
         "login menu button": "a[aria-label='Giriş Yap']",
@@ -45,7 +47,10 @@ class TestData:
         "login - signup button": "a[href='/uye-ol']",
         "messages button": "//div[@class='messages-wrapper']",
         "favorites button": "//div[@class='favorites-wrapper']",
-        "notifications button": "//div[@class='notifications-wrapper']"
+        "notifications button": "//div[@class='notifications-wrapper']",
+        "google confidentiality agreement link": "//a[text()='Google Gizlilik Politikası']",
+        "google terms & conditions link": "//a[text()='Kullanım Koşulları']",
+        "hide / show password icon": "//button[contains(@class,'btn-togglePassword')]"
     }
 
 

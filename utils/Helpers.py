@@ -2,6 +2,7 @@ from config.Config import TestData
 class Helpers:
     def __init__(self):
         self.config = TestData()
+
     def return_page_url(self, page):
         page = page.lower().replace(" ", "")
         if page == "homepage":

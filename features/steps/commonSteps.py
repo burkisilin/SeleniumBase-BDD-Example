@@ -40,9 +40,14 @@ def user_should_see_element(context, locator):
 
 
 @step('user should see url is "{page}"')
-def step_impl(context, page):
+def page_url_is(context, page):
+    if "http" in page:
+        expected_url = page
+    else:
+        expected_url = helpers.return_page_url(page)
+
     sb = context.sb
-    sb.assert_true(sb.get_current_url() == helpers.return_page_url(page))
+    sb.assert_true(sb.get_current_url() == expected_url)
 
 
 @step('user should see text "{text}"')
@@ -52,6 +57,6 @@ def user_should_see_text(context, text):
 
 
 @step('"{element}"\'s "{attribute}" attribute has "{required_value}"')
-def step_impl(context, element, attribute, required_value):
+def element_attr_has_value(context, element, attribute, required_value):
     sb = context.sb
     sb.assert_true(required_value in (sb.get_attribute(helpers.return_selector(element), attribute)))

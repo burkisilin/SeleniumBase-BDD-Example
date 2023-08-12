@@ -19,10 +19,9 @@ def login_with_creds(context, credential_type):
     sb.type(helpers.return_selector("Login Password"), password)
     sb.click(helpers.return_selector("Login Button"))
 
-
-
-
-
+@step('"{field}" is entered as "{inpt}"')
+def enter_field(context, field, inpt):
+    context.sb.type(helpers.return_selector(field), inpt)
 
 
 
@@ -50,5 +49,23 @@ def type_test(context, locator, text):
 @step('sleep "{sec}" seconds')
 def sleep_secs(context, sec):
     time.sleep(int(sec))
+
+
+@step('password is "{needed_visibility}"')
+def switch_password_visibility(context, needed_visibility):
+    if not (needed_visibility.lower() == "hidden" or needed_visibility.lower() == "shown"):
+        raise Exception("Unexpected keyword from cucumber file!")
+
+    sb = context.sb
+    pw_input_type = sb.get_attribute(helpers.return_selector("Login Password"), "type")
+    if pw_input_type == "password":
+        current_state = "hidden"
+    elif pw_input_type == "text":
+        current_state = "shown"
+
+    if needed_visibility != current_state:
+        sb.click(helpers.return_selector("Hide / Show Password Icon"))
+
+
 
 
