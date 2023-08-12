@@ -38,6 +38,7 @@ class TestData:
     # Locators must be lower case letters
     LOCATORS = {
         "search input": "input.input[placeholder='Kelime, galeri adı veya ilan no ile ara']",
+        "create adversite button": "button.btn-create-advert",
         "login menu button": "a[aria-label='Giriş Yap']",
         "login button": "button.btn-form-submit",
         "signup - signup button": "button.btn-form-submit",
@@ -48,9 +49,13 @@ class TestData:
         "messages button": "//div[@class='messages-wrapper']",
         "favorites button": "//div[@class='favorites-wrapper']",
         "notifications button": "//div[@class='notifications-wrapper']",
+        "user menu": "div.user-menu-wrapper",
         "google confidentiality agreement link": "//a[text()='Google Gizlilik Politikası']",
         "google terms & conditions link": "//a[text()='Kullanım Koşulları']",
-        "hide / show password icon": "//button[contains(@class,'btn-togglePassword')]"
+        "hide / show password icon": "//button[contains(@class,'btn-togglePassword')]",
+        "showcase table": "div.showcase.row",
+        "top nav menu": "ul.navigation-list",
+        "categories menu": "ul.category-section",
     }
 
 

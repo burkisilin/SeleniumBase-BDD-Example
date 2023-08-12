@@ -4,7 +4,6 @@ Feature: Scenarios for the arabam.com login page
     Given user is not logged in
     Given user is at "LoginPage"
 
-
   Scenario: Login - Success
     When user tries to login with "valid" credentials
     Then user should see "Messages Button"
@@ -19,14 +18,12 @@ Feature: Scenarios for the arabam.com login page
     And user should see url is "LoginPage"
     And user should see page title is "Üye Girişi"
 
-
   Scenario: Login - invalid password
     When user tries to login with "invalid password" credentials
     Then user should see text "Şifre eksik ya da hatalı"
     And "login password"'s "class" attribute has "dirty invalid validated required"
     And user should see url is "LoginPage"
     And user should see page title is "Üye Girişi"
-
 
   Scenario: Login - empty email
     When user tries to login with "empty email" credentials
@@ -35,14 +32,12 @@ Feature: Scenarios for the arabam.com login page
     And user should see url is "LoginPage"
     And user should see page title is "Üye Girişi"
 
-
   Scenario: Login - empty password
     When user tries to login with "empty password" credentials
     Then user should see text "Şifre giriniz"
     And "login password"'s "class" attribute has "dirty invalid validated required"
     And user should see url is "LoginPage"
     And user should see page title is "Üye Girişi"
-
 
   Scenario: Login - empty email & empty password
     When user tries to login with "empty email & empty password" credentials
@@ -52,7 +47,6 @@ Feature: Scenarios for the arabam.com login page
     And "login password"'s "class" attribute has "dirty invalid validated required"
     And user should see url is "LoginPage"
     And user should see page title is "Üye Girişi"
-
 
   Scenario: Login - Forgot password redirects correctly
     When user clicks to the "Forgot Password Button"
