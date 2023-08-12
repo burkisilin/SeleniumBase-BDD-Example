@@ -50,7 +50,6 @@ def page_url_is(context, page):
         expected_url = helpers.return_page_url(page)
 
     sb = context.sb
-    print(sb.get_current_url())
     sb.assert_true(sb.get_current_url() == expected_url)
 
 
@@ -95,3 +94,26 @@ def user_should_not_see_element(context, locator):
 def refresh_page(context):
     sb = context.sb
     sb.refresh_page()
+
+
+@step('user clicked the "{text}" from "{locator}"')
+def click_text_from_items(context, text, locator):
+    sb = context.sb
+    elements = sb.find_elements(helpers.return_selector(locator))
+    clicked = False
+    for elem in elements:
+        if text in elem.get_attribute("textContent"):
+            print(elem.get_attribute("textContent"))
+            elem.click()
+            clicked = True
+            break
+    if not clicked:
+        sb.assert_true(False)  # fail the test if the click has not made
+
+
+@step('user select "{combobox_text}" combobox as "{selection}"')
+def select_combobox(context, combobox_text, selection):
+    sb = context.sb
+    locators_to_click = [f"//span[text()='{combobox_text}']", f"//*[text()='{selection}']", "button.close-cities-items"]
+    sb.click_chain(locators_to_click)
+    time.sleep(3)

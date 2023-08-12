@@ -24,7 +24,6 @@ Feature: Scenarios for the arabam.com homepage
     And user should see "Favorites Button"
     And user should see "Notifications Button"
 
-
   Scenario: Search is shown
     Then user should see "Search Input"
 

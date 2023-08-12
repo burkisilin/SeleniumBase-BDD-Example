@@ -31,9 +31,9 @@ def type_test(context, locator, text):
     sb.type(helpers.return_selector(locator), text)
 
 
-@step('sleep "{sec}" seconds')
+@step('sleep {sec} seconds')
 def sleep_secs(context, sec):
-    time.sleep(int(sec))
+    time.sleep(sec)
 
 
 @step('password is "{needed_visibility}"')

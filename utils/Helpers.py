@@ -20,3 +20,6 @@ class Helpers:
 
     def return_selector(self, element_locator):
         return self.config.LOCATORS[element_locator.lower()]
+
+    def return_int_from_string(self, string):
+        return int(''.join(filter(str.isdigit, string)))

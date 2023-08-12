@@ -38,6 +38,7 @@ class TestData:
     # Locators must be lower case letters
     LOCATORS = {
         "search input": "input.input[placeholder='Kelime, galeri adı veya ilan no ile ara']",
+        "search button": "button.search-button",
         "create adversite button": "button.btn-create-advert",
         "login menu button": "a[aria-label='Giriş Yap']",
         "login button": "button.btn-form-submit",
@@ -74,6 +75,12 @@ class TestData:
         "app store app button": "//a[contains(@href,'itunes.apple')]",
         "app gallery app button": "//a[contains(@href,'appgallery7.huawei')]",
         "accept cookie button": "button.cookie-policy-banner-button",
+
+        "search result amount": "//span[contains(@id,'advert-count')]",
+        "search result items": "//tr[contains(@class,'listing-list-item')]",
+        "search result categories": "//div[@class='category-facet']//ul[@class='inner-list']",
+        "search selected category": "li.selected-list-item > a",
+        "search page search button": "//button[text()='Ara']",
     }
 
 
