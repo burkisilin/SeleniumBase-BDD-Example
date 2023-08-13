@@ -117,3 +117,16 @@ def click_button_by_text(context, text):
     sb.click(f"//*[contains(text(),'{text}')]")
 
 
+@step('user hover to the "{locator}"')
+def hover_to_element(context, locator):
+    sb = context.sb
+    sb.hover(helpers.return_selector(locator))
+
+
+@step('"{locator}"\'s "{property}" property is "{expected_value}"')
+def check_property_value(context, locator, property, expected_value):
+    sb = context.sb
+    value = sb.get_property_value(helpers.return_selector(locator), property)
+    if "rgb" in value:
+        value = helpers.convert_rgb_to_hex(value)
+    sb.assert_true(value == expected_value)

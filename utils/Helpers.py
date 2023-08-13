@@ -73,3 +73,9 @@ class Helpers:
                 raise Exception("Invalid order provided at cucumber file!")
         else:
             raise Exception("Unexpected item type!")
+
+    def convert_rgb_to_hex(self, rgb_color):
+        color_tuple = eval(rgb_color.replace("rgb",""))
+        hex_color = '#' + ''.join(f'{i:02X}' for i in color_tuple)
+        return hex_color.lower()
+

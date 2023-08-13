@@ -140,11 +140,15 @@ Feature: Scenarios for the arabam.com search page
     Then user should see first item name is changed
     Then user should see "3". page is active at pagination
 
+  Scenario: Hovered item color is pink (#ffedf1)
+    Given user searches "bmw" item
+    When user hover to the "search result items"
+    Then "search result items"'s "background-color" property is "#ffedf1"
+
 
   Scenario: 20 item per page
   Scenario: 50 item per page
   Scenario: All results are shown
-  Scenario: Hovered item color is pink
 
 
 
