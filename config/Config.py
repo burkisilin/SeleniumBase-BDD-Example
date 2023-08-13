@@ -90,6 +90,8 @@ class TestData:
         "favorite list": "div.list-name",
         "hide item": "//span[contains(@onclick,'toggleHide')]",
         "show item": "//span[@class='toolbox-item']",
+        "item titles": "//div[contains(@class,'listing-title')]",
+        "item detail title": "p.advert-detail-title",
     }
 
 

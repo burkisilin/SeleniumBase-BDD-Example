@@ -107,7 +107,6 @@ Feature: Scenarios for the arabam.com search page
     Then user should see that "search result prices" are ordered by "not ordered"
 
 
-
   Scenario: Add product to favorites
     Given user clicks to the "Login Menu Button"
     Given user tries to login with "valid" credentials
@@ -128,24 +127,22 @@ Feature: Scenarios for the arabam.com search page
     Then user should see 1. item is "shown"
 
   Scenario: Open product
+    Given user searches "bmw" item
+    When user open 1. product
+    Then user should see item name is correct
+    Then user should see page title contains item title
 
-  Scenario: Compare product items are remains after the compare box is closed and opened again
-  Scenario: Try to add more than 3 product to compare list
-  Scenario: Switch tabpanel
-  Scenario: Switch tabpanel does not change filter applied
+
   Scenario: Pagination works
+    Given user searches "bmw" item
+    Given user got "atleast 50" result
+
+
   Scenario: 20 item per page
   Scenario: 50 item per page
   Scenario: All results are shown
   Scenario: Hovered item color is pink
 
-  Scenario: Add product to compare list
-  Scenario: Remove product from compare list
-  Scenario: Remove all products from compare list
-  Scenario: Compare 2 product
-  Scenario: Compare 3 product
-  Scenario: List view
-  Scenario: Detailed view
-  Scenario: Box view
+
 
 

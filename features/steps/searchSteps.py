@@ -29,7 +29,7 @@ def search_item(context, search_keyword):
 @step('user should see results are "{state}"')
 def results_shown(context, state):
     sb = context.sb
-    item_amount = int(sb.get_text_content(helpers.return_selector("search result amount")).replace(".", ""))
+    item_amount = helpers.return_int_from_string(sb.get_text_content(helpers.return_selector("search result amount")))
     if state == "shown":
         sb.assert_true(sb.is_element_visible(helpers.return_selector("search result items")) and item_amount > 0)
     elif state == "not shown":
@@ -54,7 +54,7 @@ def category_item_amount_is_correct(context, category):
     sb = context.sb
     elem_text = sb.get_text_content(helpers.return_selector("search selected category"))
     category_item_amount = helpers.return_int_from_string(elem_text)
-    actual_result_amount = int(sb.get_text_content(helpers.return_selector("search result amount")).replace(".", ""))
+    actual_result_amount = helpers.return_int_from_string(sb.get_text_content(helpers.return_selector("search result amount")))
     sb.assert_equal(category_item_amount, actual_result_amount)
 
 
@@ -156,3 +156,39 @@ def item_state_is_correct(context, state, item_index):
 
     hide_show_button = f'{item_selector}{helpers.return_selector(state)}'
     sb.assert_text(text_to_assert, hide_show_button)
+
+
+@step("user open {1}. product")
+def open_product(context, item_index):
+    sb = context.sb
+    item_selector = f'{helpers.return_selector("search result items")}[{item_index}]'
+    item_name = sb.get_text_content(f"{item_selector}{helpers.return_selector('item titles')}")
+    context.item_name = item_name
+    sb.click(item_selector)
+
+
+@step("user should see item name is correct")
+def product_name_is_correct(context):
+    sb = context.sb
+    detail_item_name = sb.get_text_content(helpers.return_selector("item detail title"))
+    sb.assert_equal(detail_item_name, context.item_name)
+
+
+@step("user should see page title contains item title")
+def page_title_is_item_title(context):
+    sb = context.sb
+    sb.assert_true(context.item_name in sb.get_title())
+
+
+@step('user got "{result_type}" result')
+def search_result_amount(context, result_type):
+    sb = context.sb
+    search_result_amount = helpers.return_int_from_string(sb.get_text_content(helpers.return_selector("search result amount")))
+    expected_result_amount = helpers.return_int_from_string(result_type)
+    if "atleast" in result_type:
+        sb.assert_true(search_result_amount >= expected_result_amount)
+    elif "max" in result_type:
+        sb.assert_true(search_result_amount <= expected_result_amount)
+    else:
+        sb.assert_true(search_result_amount == expected_result_amount)
+

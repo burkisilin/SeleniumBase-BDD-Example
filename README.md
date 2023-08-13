@@ -9,6 +9,15 @@
 
 This project aims to cover example test cases for arabam.com using Behave & Selenium Base
 
+
+## Project Structure Summary
+"config" folder contains test data configs such as selectors, environment url's etc. in order to provide the low-cost maintenance for the project.  
+"features" folder contains "steps" folder, "todo features" folder, feature files and "environment.py" which is required for SeleniumBase.  
+"steps" folder contains step functions to execute tests from gherkin formatted feature files.   
+"todo features" folder contains example test scenarios which are not added due to lack of time.
+feature files contain test scenarios and test steps written in gherkin format using cucumber.  
+"utils" folder contain "Helpers.py" which contains functions such as "return_int_from_string"
+
 ## Dependencies
 
 Here are all the dependencies needed for the project to run:
