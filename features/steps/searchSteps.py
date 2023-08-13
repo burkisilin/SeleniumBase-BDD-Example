@@ -192,3 +192,26 @@ def search_result_amount(context, result_type):
     else:
         sb.assert_true(search_result_amount == expected_result_amount)
 
+
+@step('user switch page to "{page}"')
+def switch_pagination(context, page):
+    sb = context.sb
+    item_selector = f'{helpers.return_selector("search result items")}[1]'
+    first_item_name = sb.get_text_content(f"{item_selector}{helpers.return_selector('item titles')}")
+    context.first_item_name = first_item_name  # store first item name so it can be controlled later on
+    sb.click(f"#paging_{page}")
+
+
+@step("user should see first item name is changed")
+def first_item_is_changed(context):
+    sb = context.sb
+    item_selector = f'{helpers.return_selector("search result items")}[1]'
+    new_first_item_name = sb.get_text_content(f"{item_selector}{helpers.return_selector('item titles')}")
+    old_first_item_name = context.first_item_name
+    sb.assert_not_equal(new_first_item_name, old_first_item_name)
+
+
+@step('user should see "{page}". page is active at pagination')
+def pagination_page_is_active(context, page):
+    sb = context.sb
+    sb.assert_true(sb.get_attribute(f"//a[@id='paging_{page}']/parent::li", "class") == "active")

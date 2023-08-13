@@ -135,7 +135,10 @@ Feature: Scenarios for the arabam.com search page
 
   Scenario: Pagination works
     Given user searches "bmw" item
-    Given user got "atleast 50" result
+    Given user got "atleast 100" result
+    When user switch page to "3"
+    Then user should see first item name is changed
+    Then user should see "3". page is active at pagination
 
 
   Scenario: 20 item per page
