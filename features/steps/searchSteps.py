@@ -54,7 +54,8 @@ def category_item_amount_is_correct(context, category):
     sb = context.sb
     elem_text = sb.get_text_content(helpers.return_selector("search selected category"))
     category_item_amount = helpers.return_int_from_string(elem_text)
-    actual_result_amount = helpers.return_int_from_string(sb.get_text_content(helpers.return_selector("search result amount")))
+    actual_result_amount = helpers.return_int_from_string(
+        sb.get_text_content(helpers.return_selector("search result amount")))
     sb.assert_equal(category_item_amount, actual_result_amount)
 
 
@@ -183,7 +184,8 @@ def page_title_is_item_title(context):
 @step('user got "{result_type}" result')
 def search_result_amount(context, result_type):
     sb = context.sb
-    search_result_amount = helpers.return_int_from_string(sb.get_text_content(helpers.return_selector("search result amount")))
+    search_result_amount = helpers.return_int_from_string(
+        sb.get_text_content(helpers.return_selector("search result amount")))
     expected_result_amount = helpers.return_int_from_string(result_type)
     if "atleast" in result_type:
         sb.assert_true(search_result_amount >= expected_result_amount)
@@ -215,3 +217,28 @@ def first_item_is_changed(context):
 def pagination_page_is_active(context, page):
     sb = context.sb
     sb.assert_true(sb.get_attribute(f"//a[@id='paging_{page}']/parent::li", "class") == "active")
+
+
+@step('user set page size to {size}')
+def set_page_item_size(context, size):
+    sb = context.sb
+    sb.execute_script(f"handleClickSetPageSize({size})")
+
+
+@step("user should see all results are shown")
+def check_all_results_shown(context):
+    sb = context.sb
+    expected_result_amount = sb.get_text_content(helpers.return_selector("search result amount"))
+    total_page_amount = sb.get_text_content(helpers.return_selector("total page amount"))
+
+    page_size = sb.get_text_content('(//ul[@class="pagination"]//li[@class="active"]/a[@target="_self"])[2]')
+    sb.click(f'#paging_{total_page_amount}')  # go to last page
+    last_page_item_amount = len(sb.find_elements(helpers.return_selector("search result items")))
+
+    # Convert strings to integer
+    page_size = helpers.return_int_from_string(page_size)
+    total_page_amount = helpers.return_int_from_string(total_page_amount)
+    expected_result_amount = helpers.return_int_from_string(expected_result_amount)
+    total_shown_amount = (page_size * (total_page_amount - 1)) + last_page_item_amount
+
+    sb.assert_equal(expected_result_amount, total_shown_amount)

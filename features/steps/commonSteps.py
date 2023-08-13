@@ -130,3 +130,10 @@ def check_property_value(context, locator, property, expected_value):
     if "rgb" in value:
         value = helpers.convert_rgb_to_hex(value)
     sb.assert_true(value == expected_value)
+
+
+@step('user should see "{locator}" returns {expected_amount} item')
+def locator_returns_number_of_elements(context, locator, expected_amount):
+    sb = context.sb
+    actual_item_amount = len(sb.find_elements(helpers.return_selector(locator)))
+    sb.assert_equal(actual_item_amount, int(expected_amount))

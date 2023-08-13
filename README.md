@@ -51,3 +51,10 @@ behave ./features/ -D dashboard -D --firefox
 ```
 
 You can also use ``--junit`` to get ``.xml`` reports for each Behave feature. Jenkins can use these files to display better reporting for the tests.
+
+### Note  
+Some scenarios such as login failure scenarios may fail due to bot protection (captcha) on arabam.com  
+Some scenarios fail due to bugs present on production env :)
+
+Example:  
+![bug example](https://i.ibb.co/dPfG2QR/arabam-bug.png)

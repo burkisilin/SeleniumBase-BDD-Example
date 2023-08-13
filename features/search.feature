@@ -147,8 +147,20 @@ Feature: Scenarios for the arabam.com search page
 
 
   Scenario: 20 item per page
+    Given user searches "bmw" item
+    Given user got "atleast 20" result
+    When user set page size to 20
+    Then user should see "search result items" returns 20 item
+
   Scenario: 50 item per page
+    Given user searches "bmw" item
+    Given user got "atleast 50" result
+    When user set page size to 50
+    Then user should see "search result items" returns 50 item
+
   Scenario: All results are shown
+    When user searches "bmw" item
+    Then user should see all results are shown
 
 
 

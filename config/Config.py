@@ -75,7 +75,6 @@ class TestData:
         "app store app button": "//a[contains(@href,'itunes.apple')]",
         "app gallery app button": "//a[contains(@href,'appgallery7.huawei')]",
         "accept cookie button": "button.cookie-policy-banner-button",
-
         "search result amount": "//span[contains(@id,'advert-count')]",
         "search result items": "//tr[contains(@class,'listing-list-item')]",
         "search result categories": "//div[@class='category-facet']//ul[@class='inner-list']",
@@ -92,6 +91,7 @@ class TestData:
         "show item": "//span[@class='toolbox-item']",
         "item titles": "//div[contains(@class,'listing-title')]",
         "item detail title": "p.advert-detail-title",
+        "total page amount": "#js-hook-for-total-page-count",
     }
 
 
