@@ -1,13 +1,13 @@
 # Wask-Case-Study
 [![Python](https://img.shields.io/badge/Python-yellow?style=flat&logo=python)](https://www.python.org/)
 [![Selenium](https://img.shields.io/badge/Selenium-blue?style=flat&logo=selenium)](https://www.selenium.dev/)
-[![Allure](https://img.shields.io/badge/SeleniumBase-green?style=flat&logo=selenium)](https://seleniumbase.io/)
+[![Selenium Base](https://img.shields.io/badge/SeleniumBase-green?style=flat&logo=selenium)](https://seleniumbase.io/)
 [![PyTest](https://img.shields.io/badge/PyTest-orange?style=flat&logo=pytest)](https://docs.pytest.org/en/6.2.x/)
 [![Allure](https://img.shields.io/badge/Allure-blue?style=flat&logo=java)](https://docs.qameta.io/allure/)
-[![Allure](https://img.shields.io/badge/Behave-red?style=flat&logo=behave)](https://behave.readthedocs.io/en/latest/)
+[![Behave](https://img.shields.io/badge/Behave-red?style=flat&logo=behave)](https://behave.readthedocs.io/en/latest/)
 
 
-This project aims to cover test cases for arabam.com using Behave & Selenium Base
+This project aims to cover example test cases for arabam.com using Behave & Selenium Base
 
 ## Dependencies
 
@@ -40,3 +40,5 @@ other browsers can be run in such example down below. See [Selenium Base Docs](h
 cd Wask-Case-Study/
 behave ./features/ -D dashboard -D --firefox
 ```
+
+You can also use ``--junit`` to get ``.xml`` reports for each Behave feature. Jenkins can use these files to display better reporting for the tests.

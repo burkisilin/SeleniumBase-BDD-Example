@@ -82,6 +82,14 @@ class TestData:
         "search selected category": "li.selected-list-item > a",
         "search page search button": "//button[text()='Ara']",
         "search page clear filters button": "button.clear-all",
+        "search page order dropdown": "select.listing-order-dropdown-select",
+        "search result prices": "//span[contains(@class,'listing-price')]",
+        "search result years": "//tr[contains(@class,'listing-list-item')]/td[4]",
+        "search result dates": "//tr[contains(@class,'listing-list-item')]/td[6]",
+        "search result add / remove fav": "//span[contains(@onclick,'Favorite')]",
+        "favorite list": "div.list-name",
+        "hide item": "//span[contains(@onclick,'toggleHide')]",
+        "show item": "//span[@class='toolbox-item']",
     }
 
 

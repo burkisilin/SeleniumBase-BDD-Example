@@ -115,3 +115,5 @@ def click_text_from_items(context, text, locator):
 def click_button_by_text(context, text):
     sb = context.sb
     sb.click(f"//*[contains(text(),'{text}')]")
+
+
