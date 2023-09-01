@@ -40,13 +40,13 @@ pip install -r /path/to/requirements.txt
 
 run the tests by executing the command at your terminal (Uses --chrome by default)
 ```bash 
-cd BreadcrumbsSeleniumBase-BDD-Example/
+cd SeleniumBase-BDD-Example/
 behave ./features/ -D dashboard -D 
 ```
 other browsers can be run in such example down below. See [Selenium Base Docs](https://seleniumbase.io/) for details
 
 ```bash 
-cd BreadcrumbsSeleniumBase-BDD-Example/
+cd SeleniumBase-BDD-Example/
 behave ./features/ -D dashboard -D --firefox
 ```
 
