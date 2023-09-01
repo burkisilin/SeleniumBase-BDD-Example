@@ -1,4 +1,4 @@
-# Wask-Case-Study
+# SeleniumBase BDD Example Project
 [![Python](https://img.shields.io/badge/Python-yellow?style=flat&logo=python)](https://www.python.org/)
 [![Selenium](https://img.shields.io/badge/Selenium-blue?style=flat&logo=selenium)](https://www.selenium.dev/)
 [![Selenium Base](https://img.shields.io/badge/SeleniumBase-green?style=flat&logo=selenium)](https://seleniumbase.io/)
@@ -40,13 +40,13 @@ pip install -r /path/to/requirements.txt
 
 run the tests by executing the command at your terminal (Uses --chrome by default)
 ```bash 
-cd Wask-Case-Study/
+cd BreadcrumbsSeleniumBase-BDD-Example/
 behave ./features/ -D dashboard -D 
 ```
 other browsers can be run in such example down below. See [Selenium Base Docs](https://seleniumbase.io/) for details
 
 ```bash 
-cd Wask-Case-Study/
+cd BreadcrumbsSeleniumBase-BDD-Example/
 behave ./features/ -D dashboard -D --firefox
 ```
 
